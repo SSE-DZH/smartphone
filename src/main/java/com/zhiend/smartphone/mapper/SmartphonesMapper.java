@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zhiend.smartphone.vo.SmartphoneRamVO;
 import com.zhiend.smartphone.vo.SmartphonesBrandVO;
 import com.zhiend.smartphone.vo.SmartphonesModelVO;
+import com.zhiend.smartphone.vo.smartphonesStorageVO;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,4 +35,7 @@ public interface SmartphonesMapper extends BaseMapper<Smartphones> {
 
     @Select("SELECT RAM, COUNT(*) AS count FROM smartphonedb WHERE RAM IS NOT NULL GROUP BY RAM ORDER BY count DESC")
     List<SmartphoneRamVO> countRom();
+
+    @Select("SELECT Storage, COUNT(*) AS count FROM smartphonedb GROUP BY Storage ORDER BY count DESC")
+    ArrayList<smartphonesStorageVO> countStorage();
 }

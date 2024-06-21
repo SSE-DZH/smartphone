@@ -11,9 +11,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhiend.smartphone.vo.SmartphoneRamVO;
 import com.zhiend.smartphone.vo.SmartphonesBrandVO;
 import com.zhiend.smartphone.vo.SmartphonesModelVO;
+import com.zhiend.smartphone.vo.smartphonesStorageVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -72,6 +74,11 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
     @Override
     public List<SmartphoneRamVO> countRom() {
         return smartphonesMapper.countRom();
+    }
+
+    @Override
+    public ArrayList<smartphonesStorageVO> countStorage() {
+        return smartphonesMapper.countStorage();
     }
 
 

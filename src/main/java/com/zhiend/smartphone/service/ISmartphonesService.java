@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhiend.smartphone.vo.SmartphoneRamVO;
 import com.zhiend.smartphone.vo.SmartphonesBrandVO;
 import com.zhiend.smartphone.vo.SmartphonesModelVO;
+import com.zhiend.smartphone.vo.smartphonesStorageVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,9 +27,11 @@ public interface ISmartphonesService extends IService<Smartphones> {
 
     int countByType(String brand);
 
-     List<SmartphonesBrandVO> countTop10Brands();
+    List<SmartphonesBrandVO> countTop10Brands();
 
     List<SmartphonesModelVO> countModel();
 
     List<SmartphoneRamVO> countRom();
+
+    ArrayList<smartphonesStorageVO> countStorage();
 }

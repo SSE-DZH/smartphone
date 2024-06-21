@@ -130,5 +130,12 @@ public class SmartphonesController {
         return Result.success(smartphonesService.countRom());
     }
 
+    //统计Storage数量，返回封装类型smartphonesStorageVO
+    @ApiOperation("统计Storage数量")
+    @GetMapping("/count-storage")
+    public Result countStorage() {
+        return Result.success(smartphonesService.countStorage());
+    }
+
 
 }
