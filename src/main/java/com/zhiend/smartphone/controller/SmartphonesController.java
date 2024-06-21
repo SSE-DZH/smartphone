@@ -1,14 +1,19 @@
 package com.zhiend.smartphone.controller;
 
 
+import com.zhiend.smartphone.entity.BackPage;
+import com.zhiend.smartphone.entity.Smartphones;
+import com.zhiend.smartphone.result.Result;
 import com.zhiend.smartphone.service.ISmartphonesService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -26,5 +31,69 @@ import org.springframework.web.bind.annotation.RestController;
 public class SmartphonesController {
     @Autowired
     private ISmartphonesService smartphonesService;
+
+    @ApiOperation("添加智能手机")
+    @PostMapping("/add")
+    public Result addNetflixTitle(@RequestBody @Valid Smartphones smartphones, BindingResult bindingResult) {
+        // 校验参数
+        if (bindingResult.hasErrors()) {
+            return Result.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+
+        // 保存到数据库
+        boolean result = smartphonesService.save(smartphones);
+        if (result) {
+            return Result.success();
+        } else {
+            return Result.error("添加失败");
+        }
+    }
+
+    @ApiOperation("删除智能手机信息")
+    @DeleteMapping("/delete/{Smartphone}")
+    public Result deleteNetflixTitle(@PathVariable String Smartphone) {
+        boolean result = smartphonesService.removeById(Smartphone);
+        if (result) {
+            return Result.success();
+        } else {
+            return Result.error("删除失败");
+        }
+    }
+
+    @ApiOperation("更新智能手机")
+    @PutMapping("/update")
+    public Result updateNetflixTitle(@RequestBody @Valid Smartphones smartphones, BindingResult bindingResult) {
+        // 校验参数
+        if (bindingResult.hasErrors()) {
+            return Result.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+
+        // 执行更新操作
+        boolean result = smartphonesService.updateById(smartphones);
+        if (result) {
+            return Result.success();
+        } else {
+            return Result.error("更新失败");
+        }
+    }
+
+    @ApiOperation("根据Smartphone查询智能手机")
+    @GetMapping("/get/{Smartphone}")
+    public Result getNetflixTitle(@PathVariable String Smartphone) {
+        Smartphones smartphones = smartphonesService.getById(Smartphone);
+        if (smartphones != null) {
+            return Result.success(smartphones);
+        } else {
+            return Result.error("未找到对应记录");
+        }
+    }
+
+
+    @ApiOperation("查询所有分页智能手机信息")
+    @GetMapping("/getAllPages")
+    public Result queryPage(@RequestParam("pageNo") Long pageNo, @RequestParam("pageSize") Long pageSize) {
+        return Result.success(smartphonesService.queryPage(pageNo, pageSize));
+    }
+
 
 }

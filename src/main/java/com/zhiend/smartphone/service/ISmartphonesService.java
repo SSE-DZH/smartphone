@@ -1,5 +1,6 @@
 package com.zhiend.smartphone.service;
 
+import com.zhiend.smartphone.entity.BackPage;
 import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISmartphonesService extends IService<Smartphones> {
 
+    BackPage<Smartphones> queryPage(Long pageNo, Long pageSize);
 }
