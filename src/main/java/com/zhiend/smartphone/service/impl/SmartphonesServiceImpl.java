@@ -8,10 +8,7 @@ import com.zhiend.smartphone.entity.Smartphones;
 import com.zhiend.smartphone.mapper.SmartphonesMapper;
 import com.zhiend.smartphone.service.ISmartphonesService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zhiend.smartphone.vo.SmartphoneRamVO;
-import com.zhiend.smartphone.vo.SmartphonesBrandVO;
-import com.zhiend.smartphone.vo.SmartphonesModelVO;
-import com.zhiend.smartphone.vo.smartphonesStorageVO;
+import com.zhiend.smartphone.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,6 +76,16 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
     @Override
     public ArrayList<smartphonesStorageVO> countStorage() {
         return smartphonesMapper.countStorage();
+    }
+
+    @Override
+    public ArrayList<smartphonesColorVO> countColor() {
+        return smartphonesMapper.countColor();
+    }
+
+    @Override
+    public ArrayList<smartphonesFreeVO> countFree() {
+        return smartphonesMapper.countFree();
     }
 
 

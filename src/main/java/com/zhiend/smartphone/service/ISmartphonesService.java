@@ -3,10 +3,7 @@ package com.zhiend.smartphone.service;
 import com.zhiend.smartphone.entity.BackPage;
 import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zhiend.smartphone.vo.SmartphoneRamVO;
-import com.zhiend.smartphone.vo.SmartphonesBrandVO;
-import com.zhiend.smartphone.vo.SmartphonesModelVO;
-import com.zhiend.smartphone.vo.smartphonesStorageVO;
+import com.zhiend.smartphone.vo.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,4 +31,8 @@ public interface ISmartphonesService extends IService<Smartphones> {
     List<SmartphoneRamVO> countRom();
 
     ArrayList<smartphonesStorageVO> countStorage();
+
+    ArrayList<smartphonesColorVO> countColor();
+
+    ArrayList<smartphonesFreeVO> countFree();
 }

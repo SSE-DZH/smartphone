@@ -5,15 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Classname SmartphonesModelVO
- * @Description 模型
- * @Date 2024/6/21 13:12
+ * @Classname smartphonesColorVO
+ * @Description TODO
+ * @Date 2024/6/21 13:37
  * @Created by Zhiend
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SmartphonesModelVO {
-    private String Model;
-    private int count;
+public class smartphonesColorVO {
+    String Color;
+    int count;
 }

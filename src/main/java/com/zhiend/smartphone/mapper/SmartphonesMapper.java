@@ -2,10 +2,7 @@ package com.zhiend.smartphone.mapper;
 
 import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zhiend.smartphone.vo.SmartphoneRamVO;
-import com.zhiend.smartphone.vo.SmartphonesBrandVO;
-import com.zhiend.smartphone.vo.SmartphonesModelVO;
-import com.zhiend.smartphone.vo.smartphonesStorageVO;
+import com.zhiend.smartphone.vo.*;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.ArrayList;
@@ -38,4 +35,10 @@ public interface SmartphonesMapper extends BaseMapper<Smartphones> {
 
     @Select("SELECT Storage, COUNT(*) AS count FROM smartphonedb GROUP BY Storage ORDER BY count DESC")
     ArrayList<smartphonesStorageVO> countStorage();
+
+    @Select("SELECT Color, COUNT(*) AS count FROM smartphonedb GROUP BY Color ORDER BY count DESC")
+    ArrayList<smartphonesColorVO> countColor();
+
+    @Select("SELECT Free, COUNT(*) AS count FROM smartphonedb GROUP BY Free ORDER BY count DESC")
+    ArrayList<smartphonesFreeVO> countFree();
 }

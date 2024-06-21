@@ -137,5 +137,19 @@ public class SmartphonesController {
         return Result.success(smartphonesService.countStorage());
     }
 
+    //统计Color数量，返回封装类型smartphonesColorVO
+    @ApiOperation("统计Color数量")
+    @GetMapping("/count-color")
+    public Result countColor() {
+        return Result.success(smartphonesService.countColor());
+    }
+
+    //统计Free数量，返回封装类型smartphonesFreeVO
+    @ApiOperation("统计Free数量")
+    @GetMapping("/count-free")
+    public Result countFree() {
+        return Result.success(smartphonesService.countFree());
+    }
+
 
 }
