@@ -8,7 +8,11 @@ import com.zhiend.smartphone.entity.Smartphones;
 import com.zhiend.smartphone.mapper.SmartphonesMapper;
 import com.zhiend.smartphone.service.ISmartphonesService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * <p>
@@ -20,6 +24,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smartphones> implements ISmartphonesService {
+
+    @Autowired
+    private SmartphonesMapper smartphonesMapper;
+
     @Override
     //根据页码和每页分页数给出分页查询，使用wrapper
     public BackPage<Smartphones> queryPage(Long pageNo, Long pageSize) {
@@ -37,4 +45,16 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
         SmartphonesBackPage.setTotalNum(SmartphonesIPage.getTotal());
         return SmartphonesBackPage;
     }
+
+    @Override
+    public List getAllBrands() {
+        return smartphonesMapper.getAllBrands();
+    }
+
+    @Override
+    public int countByType(String brand) {
+        return smartphonesMapper.countByType(brand);
+    }
+
+
 }

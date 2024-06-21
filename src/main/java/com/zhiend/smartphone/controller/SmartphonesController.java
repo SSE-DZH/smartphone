@@ -95,5 +95,20 @@ public class SmartphonesController {
         return Result.success(smartphonesService.queryPage(pageNo, pageSize));
     }
 
+    //获取所有手机品牌，为list集合
+    @ApiOperation("获取所有手机品牌")
+    @GetMapping("/get-all-brands")
+    public Result getAllBrands() {
+        return Result.success(smartphonesService.getAllBrands());
+    }
+
+    @ApiOperation("根据品牌统计手机数量")
+    @GetMapping("/count-by-type")
+    public Result countByType(@RequestParam String brand) {
+        int count = smartphonesService.countByType(brand);
+        return Result.success(count);
+    }
+
+
 
 }
