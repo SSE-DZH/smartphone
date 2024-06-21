@@ -2,6 +2,7 @@ package com.zhiend.smartphone.mapper;
 
 import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zhiend.smartphone.vo.SmartphoneRamVO;
 import com.zhiend.smartphone.vo.SmartphonesBrandVO;
 import com.zhiend.smartphone.vo.SmartphonesModelVO;
 import org.apache.ibatis.annotations.Select;
@@ -29,4 +30,7 @@ public interface SmartphonesMapper extends BaseMapper<Smartphones> {
 
     @Select("select Model, count(*) as count from smartphonedb group by Model order by count desc")
     List<SmartphonesModelVO> countModel();
+
+    @Select("SELECT RAM, COUNT(*) AS count FROM smartphonedb WHERE RAM IS NOT NULL GROUP BY RAM ORDER BY count DESC")
+    List<SmartphoneRamVO> countRom();
 }

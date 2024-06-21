@@ -3,6 +3,7 @@ package com.zhiend.smartphone.service;
 import com.zhiend.smartphone.entity.BackPage;
 import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zhiend.smartphone.vo.SmartphoneRamVO;
 import com.zhiend.smartphone.vo.SmartphonesBrandVO;
 import com.zhiend.smartphone.vo.SmartphonesModelVO;
 
@@ -27,4 +28,6 @@ public interface ISmartphonesService extends IService<Smartphones> {
      List<SmartphonesBrandVO> countTop10Brands();
 
     List<SmartphonesModelVO> countModel();
+
+    List<SmartphoneRamVO> countRom();
 }

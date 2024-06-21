@@ -8,6 +8,7 @@ import com.zhiend.smartphone.entity.Smartphones;
 import com.zhiend.smartphone.mapper.SmartphonesMapper;
 import com.zhiend.smartphone.service.ISmartphonesService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zhiend.smartphone.vo.SmartphoneRamVO;
 import com.zhiend.smartphone.vo.SmartphonesBrandVO;
 import com.zhiend.smartphone.vo.SmartphonesModelVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,11 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
     @Override
     public List<SmartphonesModelVO> countModel() {
         return smartphonesMapper.countModel();
+    }
+
+    @Override
+    public List<SmartphoneRamVO> countRom() {
+        return smartphonesMapper.countRom();
     }
 
 

@@ -123,6 +123,12 @@ public class SmartphonesController {
         return Result.success(smartphonesService.countModel());
     }
 
+    //统计ROM数量，返回封装类型smartphonesRomVO
+    @ApiOperation("统计ROM数量")
+    @GetMapping("/count-rom")
+    public Result countRom() {
+        return Result.success(smartphonesService.countRom());
+    }
 
 
 }
