@@ -12,6 +12,7 @@ import com.zhiend.smartphone.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -49,7 +50,7 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
     }
 
     @Override
-    public List getAllBrands() {
+    public List<String> getAllBrands() {
         return smartphonesMapper.getAllBrands();
     }
 
@@ -86,6 +87,13 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
     @Override
     public ArrayList<smartphonesFreeVO> countFree() {
         return smartphonesMapper.countFree();
+    }
+
+    @Override
+    public ArrayList<Smartphones> getByPriceRange(BigDecimal minPrice, BigDecimal maxPrice) {
+        QueryWrapper<Smartphones> queryWrapper = new QueryWrapper<>();
+        queryWrapper.between("Final_Price", minPrice, maxPrice);
+        return (ArrayList<Smartphones>) smartphonesMapper.selectList(queryWrapper);
     }
 
 

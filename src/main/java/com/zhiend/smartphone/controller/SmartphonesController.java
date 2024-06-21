@@ -14,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  * <p>
@@ -149,6 +151,14 @@ public class SmartphonesController {
     @GetMapping("/count-free")
     public Result countFree() {
         return Result.success(smartphonesService.countFree());
+    }
+
+    //根据finalPrice价格区间返回Smartphones
+    @ApiOperation("根据finalPrice价格区间返回Smartphones")
+    @GetMapping("/get-by-price-range")
+    public Result getByPriceRange(@RequestParam("minPrice") BigDecimal minPrice, @RequestParam("maxPrice") BigDecimal maxPrice) {
+        ArrayList<Smartphones> smartphonesList = smartphonesService.getByPriceRange(minPrice, maxPrice);
+        return Result.success(smartphonesList);
     }
 
 

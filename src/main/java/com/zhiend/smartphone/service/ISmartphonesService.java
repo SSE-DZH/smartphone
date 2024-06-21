@@ -5,6 +5,7 @@ import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhiend.smartphone.vo.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface ISmartphonesService extends IService<Smartphones> {
 
     BackPage<Smartphones> queryPage(Long pageNo, Long pageSize);
 
-    List getAllBrands();
+    List<String> getAllBrands();
 
     int countByType(String brand);
 
@@ -35,4 +36,6 @@ public interface ISmartphonesService extends IService<Smartphones> {
     ArrayList<smartphonesColorVO> countColor();
 
     ArrayList<smartphonesFreeVO> countFree();
+
+    ArrayList<Smartphones> getByPriceRange(BigDecimal minPrice, BigDecimal maxPrice);
 }
