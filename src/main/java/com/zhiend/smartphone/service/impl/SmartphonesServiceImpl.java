@@ -8,6 +8,8 @@ import com.zhiend.smartphone.entity.Smartphones;
 import com.zhiend.smartphone.mapper.SmartphonesMapper;
 import com.zhiend.smartphone.service.ISmartphonesService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zhiend.smartphone.vo.SmartphonesBrandVO;
+import com.zhiend.smartphone.vo.SmartphonesModelVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +56,16 @@ public class SmartphonesServiceImpl extends ServiceImpl<SmartphonesMapper, Smart
     @Override
     public int countByType(String brand) {
         return smartphonesMapper.countByType(brand);
+    }
+
+    @Override
+    public List<SmartphonesBrandVO> countTop10Brands() {
+        return smartphonesMapper.countTop10Brands();
+    }
+
+    @Override
+    public List<SmartphonesModelVO> countModel() {
+        return smartphonesMapper.countModel();
     }
 
 

@@ -77,7 +77,7 @@ public class SmartphonesController {
         }
     }
 
-    @ApiOperation("根据Smartphone查询智能手机")
+    @ApiOperation("根据Smartphone（主键）查询智能手机")
     @GetMapping("/get/{Smartphone}")
     public Result getNetflixTitle(@PathVariable String Smartphone) {
         Smartphones smartphones = smartphonesService.getById(Smartphone);
@@ -107,6 +107,20 @@ public class SmartphonesController {
     public Result countByType(@RequestParam String brand) {
         int count = smartphonesService.countByType(brand);
         return Result.success(count);
+    }
+
+    //统计前10的品牌手机数量
+    @ApiOperation("统计前10的品牌手机数量")
+    @GetMapping("/count-top-10-brands")
+    public Result countTop10Brands() {
+        return Result.success(smartphonesService.countTop10Brands());
+    }
+
+    //统计手机型号数量，返回封装smartphonesModelVO
+    @ApiOperation("统计手机型号数量")
+    @GetMapping("/count-model")
+    public Result countModel() {
+        return Result.success(smartphonesService.countModel());
     }
 
 

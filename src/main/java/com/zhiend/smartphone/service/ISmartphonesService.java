@@ -3,6 +3,8 @@ package com.zhiend.smartphone.service;
 import com.zhiend.smartphone.entity.BackPage;
 import com.zhiend.smartphone.entity.Smartphones;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zhiend.smartphone.vo.SmartphonesBrandVO;
+import com.zhiend.smartphone.vo.SmartphonesModelVO;
 
 import java.util.List;
 
@@ -21,4 +23,8 @@ public interface ISmartphonesService extends IService<Smartphones> {
     List getAllBrands();
 
     int countByType(String brand);
+
+     List<SmartphonesBrandVO> countTop10Brands();
+
+    List<SmartphonesModelVO> countModel();
 }
